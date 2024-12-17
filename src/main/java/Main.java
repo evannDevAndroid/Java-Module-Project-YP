@@ -17,22 +17,27 @@ public class Main {
 
             while (true) {
                 System.out.print("Введите скорость автомобиля №" + (i + 1) + ": ");
-                speed = scanner.nextInt();
-                if (speed > 0 && speed <= 250) {
-                    break;
+                if (scanner.hasNextInt()) {
+                    speed = scanner.nextInt();
+                    if (speed > 0 && speed <= 250) {
+                        break;
+                    } else {
+                        System.out.println("Ошибка! Скорость должна быть больше 0 и меньше 251.");
+                    }
                 } else {
-                    System.out.println("Ошибка! Скорость должна быть больше 0 и меньше 251.");
+                    System.out.println("Ошибка! Пожалуйста, введите корректное целое число.");
+                    scanner.next();
                 }
             }
 
             cars[i] = new Car(name, speed);
             race.checkLeader(cars[i]);
+
         }
 
         System.out.println("Самая быстрая машина: " + race.getLeader());
         scanner.close();
     }
-
 }
 
 
